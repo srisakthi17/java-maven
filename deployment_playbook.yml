@@ -3,25 +3,26 @@
   hosts: all
   become: true
   vars:
-    nexus_url: http://ec2-65-0-123-219.ap-south-1.compute.amazonaws.com:8081/repository
-    repository_type: java-maven-app-release
+    nexus_url: http://ec2-13-235-214-135.ap-south-1.compute.amazonaws.com:8081/repository
+    repository_type: java-maven-war-app-release
     group_id: com%2Fmycompany%2Fapp
     artifact_id: hello-world-war
-    version: 1.0.0
+    version: 2.0.0
     build_number: "{{build_number}}"
   tasks:
   - name: Download file from a file path
     ansible.builtin.get_url:
       url: "{{nexus_url}}/{{repository_type}}/{{group_id}}%2F{{artifact_id}}%2F{{version}}-{{build_number}}%2F{{artifact_id}}-{{version}}-{{ build_number}}.war"
-      dest: /home/ec2-user
+      dest: /home/ec2-user/viven
       username: admin
-      password: admin
+      password: admin123
 
   - name: Rename war file
-    ansible.builtin.shell: mv /home/ec2-user/{{group_id}}%2F{{artifact_id}}%2F{{version}}-{{build_number}}%2F{{artifact_id}}-{{version}}-{{ build_number}}.war /home/ec2-user/faangler.war
+    ansible.builtin.shell: mv /home/ec2-user/viven/{{group_id}}%2F{{artifact_id}}%2F{{version}}-{{build_number}}%2F{{artifact_id}}-{{version}}-{{ build_number}}.war /home/ec2-user/viven/hello-world.war
 
   - name: Deploying artifact in webapps
-    ansible.builtin.shell: cp /home/ec2-user/faangler.war /home/ec2-user/apache-tomcat-9.0.75/webapps/faangler.war
+    ansible.builtin.shell: cp /home/ec2-user/viven/hello-world.war /opt/apache-tomcat-9.0.90/webapps/hello-world.war
 
   - name: remove the artifact
-    ansible.builtin.shell: rm -rf /home/ec2-user/faangler.war
+    ansible.builtin.shell: rm -rf /home/ec2-user/viven/hello-world.war
+
