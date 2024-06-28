@@ -24,8 +24,8 @@ pipeline{
         // stage('Sonar Scan'){
         //     steps{
         //         withSonarQubeEnv("SonarQube") {
-        //             sh "${tool("Sonar_4.8")}/bin/sonar-scanner \
-        //             -Dsonar.host.url=http://ec2-13-232-201-247.ap-south-1.compute.amazonaws.com:9000/ \
+        //             sh "${tool("Sonar_4.6.2")}/bin/sonar-scanner \
+        //             -Dsonar.host.url=http://52.66.241.89:9000/ \
         //             -Dsonar.login=sqp_0c07fd0d029a2928a7f9a656ce9486e029a7affa \
         //             -Dsonar.java.binaries=target \
         //             -Dsonar.projectKey=java-maven-app"
