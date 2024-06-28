@@ -1,16 +1,16 @@
 pipeline{
     agent{
-        label 'Master'
+        label 'agent1'
     }
 
     tools {
-        maven 'maven_3.9.0'
+        maven 'Maven_3.9.7'
     }
 
     stages{
         stage('SCM Checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevOps-SVC04/java-maven-war-app.git']])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/releases']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Viven/java-maven-war-app.git']])
             }
 
         }
@@ -21,17 +21,17 @@ pipeline{
             }
         }
 
-        // stage('Sonar Scan'){
-        //     steps{
-        //         withSonarQubeEnv("SonarQube") {
-        //             sh "${tool("Sonar_4.8")}/bin/sonar-scanner \
-        //             -Dsonar.host.url=http://ec2-13-232-201-247.ap-south-1.compute.amazonaws.com:9000/ \
-        //             -Dsonar.login=sqp_0c07fd0d029a2928a7f9a656ce9486e029a7affa \
-        //             -Dsonar.java.binaries=target \
-        //             -Dsonar.projectKey=java-maven-app"
-        //         }
-        //     }
-        // }
+        //stage('Sonar Scan'){
+        //    steps{
+        //        withSonarQubeEnv("SonarQube") {
+        //            sh "${tool("Sonar_4.6.2")}/bin/sonar-scanner \
+        //            -Dsonar.host.url=http://65.2.80.139:9000/ \
+        //            -Dsonar.login=sqp_b2c12d602066827db01278fafdc99c9c377d9d36 \
+        //            -Dsonar.java.binaries=target \
+        //            -Dsonar.projectKey=java-maven-war-app"
+        //        }
+        //    }
+        //}
 
         stage('Nexus Upload'){
             steps{
@@ -41,7 +41,7 @@ pipeline{
 
         stage('deployment'){
             agent{
-                label 'Ansible'
+                label 'agent1'
             }
             steps{
                 sh 'ansible-playbook -i inventory deployment_playbook.yml -e "build_number=${BUILD_NUMBER}"'
