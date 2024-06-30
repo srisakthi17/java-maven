@@ -22,15 +22,9 @@ pipeline{
         }
 
         stage('Sonar Scan'){
-            steps{
-                script {
-                    // requires SonarQube Scanner 2.8+
-                    scannerHome = tool 'Sonar_4.6.2'
-                }
-                 withSonarQubeEnv('SonarQube Scanner') {
-                    sh "${scannerHome}/bin/sonar-scanner \
-                //withSonarQubeEnv("SonarQube Scanner") {
-                    //sh "${tool("Sonar_4.6.2")}/bin/sonar-scanner \
+            steps
+                withSonarQubeEnv('SonarQube Scanner') {
+                    sh "${tool("Sonar_4.6.2")}/bin/sonar-scanner \
                     -Dsonar.host.url=http://13.235.69.189:9000/ \
                     -Dsonar.login=sqp_b2c12d602066827db01278fafdc99c9c377d9d36 \
                     -Dsonar.java.binaries=target \
