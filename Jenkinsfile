@@ -22,9 +22,6 @@ pipeline{
         }
 
         stage('Sonar Scan'){
-            agent{
-                label 'master'
-            }
             steps{
                 withSonarQubeEnv("SonarQube Scanner") {
                     sh "${tool("Sonar_4.6.2")}/bin/sonar-scanner \
