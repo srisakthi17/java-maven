@@ -8,7 +8,7 @@
 	<h1>DevOps Training - Apr 2023 Batch</h1>
 	<h1>This is pipeline changes by Viven</h1>
 	<h1>webhook trigger triggered success</h1>
-        <h1>Pipeline scripting</h1>
+        <h1>CI_CD_Pipeline scripting</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
