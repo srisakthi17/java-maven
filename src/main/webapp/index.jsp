@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h1>Hello World!</h1>
-	<h1>DevOps Training - Apr 2023 Batch</h1>
+	<h1>DevOps Training - July 2023 Batch</h1>
 	<h1>This is pipeline changes by Viven</h1>
 	<h1>webhook trigger triggered success</h1>
         <h1>Scripting from Pipeline branch</h1>
