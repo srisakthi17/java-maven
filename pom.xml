@@ -42,7 +42,7 @@
       <url>http://3.110.28.248:8081/repository/java-maven-snapshot/</url>
     </snapshotRepository>
     <repository>
-      <id>java-maven-war-app-release</id>
+      <id>java-maven-release</id>
       <url>http://3.110.28.248:8081/repository/java-maven-release/</url>
     </repository>
   </distributionManagement>
