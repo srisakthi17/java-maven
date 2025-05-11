@@ -39,11 +39,11 @@
     <distributionManagement>
     <snapshotRepository>
       <id>java-maven-snapshot</id>
-      <url>http://172.31.36.110:8081/repository/java-maven-snapshot/</url>
+      <url>http://172.31.0.40:8081/repository/java-maven-snapshot/</url>
     </snapshotRepository>
     <repository>
       <id>java-maven-release</id>
-      <url>http://172.31.36.110:8081/repository/java-maven-release/</url>
+      <url>http://172.31.0.40:8081/repository/java-maven-release/</url>
     </repository>
   </distributionManagement>
 </project>
